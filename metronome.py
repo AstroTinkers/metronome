@@ -5,8 +5,11 @@ import keyboard
 
 def wait(delay):
     end_time = time.time() + delay
-    while end_time > time.time():
+    while time.time() < end_time:
+        if keyboard.is_pressed('space'):
+            return True
         continue
+    return False
 
 
 def metronome(bpm):
@@ -16,9 +19,8 @@ def metronome(bpm):
     mode = 4
 
     while True:
-        if keyboard.is_pressed('space'):
+        if wait(delay):
             break
-        wait(delay)
         count += 1
         if count > mode:
             count = 1
@@ -35,8 +37,8 @@ while True:
         break
     try:
         beats = int(beats)
-        print(f"Now playing at {beats} BPM. Hold 'space' to stop and input a new BPM.")
         metronome(beats)
+        print(f"Now playing at {beats} BPM. Press 'space' to stop and input a new BPM.")
     except ValueError:
         print("Invalid input, please input a valid bpm!")
     except ZeroDivisionError:
