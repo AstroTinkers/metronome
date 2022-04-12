@@ -37,7 +37,7 @@ while True:
         beats = int(beats)
         metronome(beats)
     except ValueError:
-        print("Invalid input, please input a valid bpm.")
+        print("Invalid input, please input a valid bpm!")
     except ZeroDivisionError:
-        print("Invalid input, please input a valid bpm.")
+        print("Invalid input, please input a valid bpm!")
     continue
