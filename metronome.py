@@ -17,7 +17,7 @@ def metronome(bpm):
     count = 0
     beat = 0
     mode = 4
-
+    print(f"Now playing at {beats} BPM. Press 'space' to stop and input a new BPM.")
     while True:
         if wait(delay):
             break
@@ -38,7 +38,6 @@ while True:
     try:
         beats = int(beats)
         metronome(beats)
-        print(f"Now playing at {beats} BPM. Press 'space' to stop and input a new BPM.")
     except ValueError:
         print("Invalid input, please input a valid bpm!")
     except ZeroDivisionError:
