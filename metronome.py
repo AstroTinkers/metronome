@@ -1,5 +1,6 @@
 import time
 import simpleaudio
+import keyboard
 
 
 def wait(delay):
@@ -16,23 +17,21 @@ def metronome(bpm):
     mode = 4
 
     while True:
+        if keyboard.is_pressed('q'):
+            break
         wait(delay)
         count += 1
-
         if count > mode:
             count = 1
             beat += 1
-
         wave_obj = simpleaudio.WaveObject.from_wave_file('metronome.wav')
         if count == 1:
             wave_obj = simpleaudio.WaveObject.from_wave_file('metronomeup.wav')
-
-        play_obj = wave_obj.play()
-        play_obj
+        wave_obj.play()
 
 
 while True:
-    beats = input("Input bpm: ")
+    beats = input("Input bpm or 'q' to stop: ")
     try:
         beats = int(beats)
         metronome(beats)
@@ -40,4 +39,3 @@ while True:
         print("Invalid input, please input a valid bpm!")
     except ZeroDivisionError:
         print("Invalid input, please input a valid bpm!")
-    continue
