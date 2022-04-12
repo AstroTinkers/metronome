@@ -20,7 +20,7 @@ def metronome(bpm):
         count += 1
 
         if count > mode:
-            count += 1
+            count = 1
             beat += 1
 
         wave_obj = simpleaudio.WaveObject.from_wave_file('metronome.wav')
@@ -32,13 +32,12 @@ def metronome(bpm):
 
 
 while True:
-    beats = input("Input bpm or 'q' to stop: ")
-    if beats == 'q':
-        break
-    else:
-        try:
-            beats = int(beats)
-            metronome(beats)
-        except ValueError:
-            print("Invalid input, please input a valid bpm.")
-        continue
+    beats = input("Input bpm: ")
+    try:
+        beats = int(beats)
+        metronome(beats)
+    except ValueError:
+        print("Invalid input, please input a valid bpm.")
+    except ZeroDivisionError:
+        print("Invalid input, please input a valid bpm.")
+    continue
