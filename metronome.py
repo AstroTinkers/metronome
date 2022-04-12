@@ -35,7 +35,7 @@ while True:
         break
     try:
         beats = int(beats)
-        print(f"Now playing at {beats} BPM. Hold 'space' to stop and input a new bpm.")
+        print(f"Now playing at {beats} BPM. Hold 'space' to stop and input a new BPM.")
         metronome(beats)
     except ValueError:
         print("Invalid input, please input a valid bpm!")
